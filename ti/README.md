@@ -10,6 +10,12 @@ def frange(start, stop=None, step=1):
     start = round(start + step, 12)
 #End function frange
 ```
+### usage:
+```pyhton
+for i in frange(1, 2, 0.1):
+  print(i)
+```
+
 
 # ```math_plus.Point```
 
