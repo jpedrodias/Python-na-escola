@@ -5,7 +5,8 @@ def frange(start, stop=None, step=1):
   while start <= stop-step:
     yield start
     start = round(start + step, 12)
-    
+#End function frange
+
 class Point():
   def __init__(self, x, y):
     self.x, self.y = x, y
@@ -16,7 +17,7 @@ class Point():
   def __repr__(self):
     values = {'name': self.__qualname__, 'x': self.x, 'y': self.y}
     return '{name}(x={x}, y={y})'.format(**values)
-# End class Point 
+#End class Point 
 
 class Straight_line():
   def __init__(self, p1, p2):
