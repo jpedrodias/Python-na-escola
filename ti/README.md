@@ -66,6 +66,7 @@ class Straight_line():
 ```
 **usage for Straight_line:**
 ```pyhton
+from math_plus import Point, Straight_line
 A = Point(0, 0)
 B = Point(1, 1)
 r = Straight_line(A, B)
