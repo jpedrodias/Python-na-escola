@@ -1,5 +1,5 @@
 # math_plus.frange
-```pyhton
+```python
 def frange(start, stop=None, step=1):
   '''float range - usage: for i in frange(1, 2, 0.1): print(i)'''
   if stop is None:
@@ -10,14 +10,15 @@ def frange(start, stop=None, step=1):
 #End function frange
 ```
 **usage for frange:**
-```pyhton
+```python
+from math_plus import frange
 for i in frange(1, 2, 0.1):
   print(i)
 ```
 
 
 # math_plus.Point
-```pyhton
+```python
 class Point():
   def __init__(self, x, y):
     self.x, self.y = x, y
@@ -32,7 +33,8 @@ class Point():
 ```
 
 **usage for Point:**
-```pyhton
+```python
+from math_plus import Point
 A = Point(0, 0)
 B = Point(1, 1)
 distance = A - B
@@ -41,7 +43,7 @@ print(A, B, distance)
 
 
 # math_plus.Straight_line
-```pyhton
+```python
 class Straight_line():
   def __init__(self, p1, p2):
     self.p1, self.p2 = p1, p2
@@ -65,7 +67,7 @@ class Straight_line():
 #End class Straight_line
 ```
 **usage for Straight_line:**
-```pyhton
+```python
 from math_plus import Point, Straight_line
 A = Point(0, 0)
 B = Point(1, 1)
