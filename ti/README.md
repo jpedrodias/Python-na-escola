@@ -9,7 +9,7 @@ def frange(start, stop=None, step=1):
     start = round(start + step, 12)
 #End function frange
 ```
-### usage for frange:
+**usage for frange:**
 ```pyhton
 for i in frange(1, 2, 0.1):
   print(i)
@@ -31,7 +31,7 @@ class Point():
 #End class Point 
 ```
 
-***usage for Point:***
+**usage for Point:**
 ```pyhton
 A = Point(0, 0)
 B = Point(1, 1)
@@ -64,7 +64,7 @@ class Straight_line():
     return 'y = {m} x + {x}'.format(**values)
 #End class Straight_line
 ```
-### usage for Straight_line:
+**usage for Straight_line:**
 ```pyhton
 A = Point(0, 0)
 B = Point(1, 1)
