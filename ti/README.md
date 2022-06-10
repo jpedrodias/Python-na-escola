@@ -10,7 +10,7 @@ def frange(start, stop=None, step=1):
     start = round(start + step, 12)
 #End function frange
 ```
-### usage:
+### usage for frange:
 ```pyhton
 for i in frange(1, 2, 0.1):
   print(i)
@@ -31,4 +31,12 @@ class Point():
     values = {'name': self.__qualname__, 'x': self.x, 'y': self.y}
     return '{name}(x={x}, y={y})'.format(**values)
 #End class Point 
+```
+
+### usage for Point:
+```pyhton
+A = Point(0, 0)
+B = Point(1, 1)
+distance = A - B
+print(A, B, distance)
 ```
