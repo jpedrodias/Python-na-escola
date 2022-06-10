@@ -31,7 +31,7 @@ class Point():
 #End class Point 
 ```
 
-### usage for Point:
+***usage for Point:***
 ```pyhton
 A = Point(0, 0)
 B = Point(1, 1)
