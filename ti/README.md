@@ -1,5 +1,4 @@
-# ```math_plus.frange```
-
+# math_plus.frange
 ```pyhton
 def frange(start, stop=None, step=1):
   '''float range - usage: for i in frange(1, 2, 0.1): print(i)'''
@@ -17,8 +16,7 @@ for i in frange(1, 2, 0.1):
 ```
 
 
-# ```math_plus.Point```
-
+# math_plus.Point
 ```pyhton
 class Point():
   def __init__(self, x, y):
@@ -39,4 +37,37 @@ A = Point(0, 0)
 B = Point(1, 1)
 distance = A - B
 print(A, B, distance)
+```
+
+
+# math_plus.Straight_line
+```pyhton
+class Straight_line():
+  def __init__(self, p1, p2):
+    self.p1, self.p2 = p1, p2
+    self.m, self.c = self.gradient, self.zero
+  @property
+  def gradient(self):
+    dx = self.p2.x - self.p1.x
+    dy = self.p2.y - self.p1.x
+    if dx == 0:
+      return float('inf')
+    return dy / dx
+  @property
+  def zero(self):
+    dx = self.p2.x - self.p1.x
+    if dx == 0:
+      return float('inf')
+    return self.p1.y - self.gradient * self.p1.x
+  def __repr__(self):
+    values = {'m': self.m, 'c': self.c}
+    return 'y = {m} x + {x}'.format(**values)
+#End class Straight_line
+```
+### usage for Straight_line:
+```pyhton
+A = Point(0, 0)
+B = Point(1, 1)
+r = Straight_line(A, B)
+print(r)
 ```
