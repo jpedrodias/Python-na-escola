@@ -14,7 +14,8 @@ class Point():
     dy = self.y - other.y
     return ((dx**2+dy**2))**0.5
   def __repr__(self):
-    return 'Point({}, {})'.format(self.x, self.y)
+    values = {'name': self.__qualname__, 'x': self.x, 'y': self.y}
+    return '{name}(x={x}, y={y})'.format(**values)
 # End class Point 
 
 class Straight_line():
@@ -35,7 +36,8 @@ class Straight_line():
       return float('inf')
     return self.p1.y - self.gradient * self.p1.x
   def __repr__(self):
-    return 'y = {} x + {}'.format(self.m, self.c)
+    values = {'m': self.m, 'c': self.c}
+    return 'y = {m} x + {x}'.format(**values)
 #End class Straight_line
 
 A = Point(0, 0)
