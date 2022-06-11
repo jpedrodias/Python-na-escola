@@ -3,14 +3,18 @@
 
 - [x] [Python - International Baccalaureate - Computer Science CS/HL](ib)
   - [ ] abstract_data_structures.py
-    - [ ] Array - ```my_array = Array()```
-    - [ ] Stack - ```my_stack = Stack(size=10)```
-    - [ ] Queue - ```my_queue = Queue(size=10)```
-    - [ ] LinkedList - ```my_llist = LinkedList()```
+    - [x] Array - ```my_array = Array()```
+    - [x] Stack - ```my_stack = Stack(size=10)```
+    - [x] Queue - ```my_queue = Queue(size=10)```
+    - [x] LinkedList - ```my_llist = LinkedList()```
 
 - [x] [Python - Texas Instruments Nspire CX II-T](ti)
   - [ ] math_plus.py
-    - [ ] frange - float range: ```for i range(1, 2, 0.1):```
-    - [ ] Point - ```A = Point(1, 1)```
-    - [ ] Straight_line - ```r = Straight_line(A, B)```
+    - [x] frange - float range: ```for i range(1, 2, 0.1):```
+    - [x] Point - ```A = Point(1, 1)```
+    - [x] Straight_line - ```r = Straight_line(A, B)```
+  - [ ] ti_hub_plus.py
+    - [ ] virtual_pins.Hub_Brightness_Pin
+    - [ ] virtual_pins.Hub_BB_Pin
+    - [ ] photogate.PhotoGate (using hub brightness sensor)
   
