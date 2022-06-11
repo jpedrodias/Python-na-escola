@@ -8,7 +8,7 @@
     - [ ] Queue - ```my_queue = Queue(size=10)```
     - [ ] LinkedList - ```my_llist = LinkedList()```
 
-- [x] [Python - Texas Instruments nspire CX II-T](ti)
+- [x] [Python - Texas Instruments Nspire CX II-T](ti)
   - [ ] math_plus.py
     - [ ] frange - float range: ```for i range(1, 2, 0.1):```
     - [ ] Point - ```A = Point(1, 1)```
