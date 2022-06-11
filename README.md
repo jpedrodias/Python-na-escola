@@ -18,5 +18,6 @@
   - [ ] ti_hub_plus.py
     - [ ] virtual_pins.Hub_Brightness_Pin
     - [ ] virtual_pins.Hub_BB_Pin (Breadboard)
-    - [ ] photogate.PhotoGate (using hub brightness sensor)
+    - [ ] photogate.PhotoGate using hub brightness sensor
+    - [ ] photogate.PhotoGate using avoidance sensor connected to hub breadboard pins)
   
