@@ -15,6 +15,6 @@
     - [x] Straight_line - ```r = Straight_line(A, B)```
   - [ ] ti_hub_plus.py
     - [ ] virtual_pins.Hub_Brightness_Pin
-    - [ ] virtual_pins.Hub_BB_Pin
+    - [ ] virtual_pins.Hub_BB_Pin (Breadboard)
     - [ ] photogate.PhotoGate (using hub brightness sensor)
   
