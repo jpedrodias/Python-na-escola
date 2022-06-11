@@ -1,4 +1,4 @@
-# Python-school
+# Python (at your) school
 
 - [x] [Python - International Baccalaureate - Computer Science CS/HL](ib)
   - [ ] abstract_data_structures.py
