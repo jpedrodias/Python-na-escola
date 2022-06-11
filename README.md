@@ -10,7 +10,7 @@
     - [ ] Tree
     - [ ] BinaryTree
 
-- [x] [Python - Texas Instruments Nspire CX II-T](ti)
+- [x] **ti** [Python - Texas Instruments Nspire CX II-T](ti)
   - [ ] math_plus.py
     - [x] frange - float range: ```for i range(1, 2, 0.1):```
     - [x] Point - ```A = Point(1, 1)```
