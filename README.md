@@ -7,6 +7,8 @@
     - [x] Stack - ```my_stack = Stack(size=10)```
     - [x] Queue - ```my_queue = Queue(size=10)```
     - [x] LinkedList - ```my_llist = LinkedList()```
+    - [ ] Tree
+    - [ ] BinaryTree
 
 - [x] [Python - Texas Instruments Nspire CX II-T](ti)
   - [ ] math_plus.py
