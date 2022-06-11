@@ -8,6 +8,8 @@
     - [ ] LinkedList
 
 - [x] [Python - Texas Instruments nspire cx-ii t](ti)
-  - [x] Point
-  - [x] Straight_line
-  - [x] frange
+  - [ ] math_plus
+    - [ ] frange - float range: ```for i range(1, 2, 0.1):```
+    - [ ] Point - ```A = Point(1, 1)```
+    - [ ] Straight_line
+  
