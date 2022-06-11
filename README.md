@@ -1,7 +1,7 @@
 # Python (at your) school
 
 
-- [x] [Python - International Baccalaureate - Computer Science CS/HL](ib)
+- [x] [ib] [Python - International Baccalaureate - Computer Science CS/HL](ib)
   - [ ] abstract_data_structures.py
     - [x] Array - ```my_array = Array()```
     - [x] Stack - ```my_stack = Stack(size=10)```
