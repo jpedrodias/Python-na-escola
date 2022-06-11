@@ -11,5 +11,5 @@
   - [ ] math_plus
     - [ ] frange - float range: ```for i range(1, 2, 0.1):```
     - [ ] Point - ```A = Point(1, 1)```
-    - [ ] Straight_line
+    - [ ] Straight_line - ```r = Straight_line(A, B)```
   
