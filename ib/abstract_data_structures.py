@@ -1,4 +1,6 @@
-class abstract():
+__version__ = 0.2 # 2022/11/09
+
+class Abstract():
     class VirtualEmptySpace():
         def __repr__(self):
             return ' '
@@ -15,20 +17,22 @@ class abstract():
         return cls.null
 #End class abstract
 
+
 class Array():
     """This a Array with fixed size.
 Usage:
     a1 = Array(size=10)
-    
-"""
-    def __init__(self, size=10, default=abstract.null):
-        self.items = [default for i in range(size)]
+    a2 = Array(items=[1, 2, 3])"""
+    def __init__(self, items=10, default=Abstract.null):
+        if isinstance(items, int):
+            self.items = [default for i in range(items)]
+        elif isinstance(items, list):
+            self.items = items
+        else:
+            self.items = list()
     
     def __len__(self):
         return len(self.items)
-    
-    def __repr__(self):
-        return "Array" + str(self.items) + ''
     
     def __getitem__(self, index):
         if 0 < index >= self.lenght:
@@ -56,72 +60,99 @@ Usage:
     def lenght(self):
         return len(self)
     
+    def __repr__(self):
+        return f'Array({self.items})'
 #End class Array
 
+
+class Collection():
+    """Collection store a ser of elemets of any type
+A collection is like a linked-list, but the order of elements is not guaranteed so you can’t use .get(x) or .size() etc.
+- .resetNext() → start at the beginning
+- .addItem( data ) → add data item to the collection
+- .hasNext() → tells whether there is another item in the list
+- .getNext() → retrieves a data item from the collection
+- .isEmpty() → check whether collection is empty"""
+    
+    def __init__(self, items=None):
+        if isinstance(items, list):
+            self.items = items
+        else:
+            self.items = list()
+        self.index = 0
+    
+    def addItem(self, value):
+        self.items.append(value)
+    
+    def getNext(self):
+        if self.index>=len(self.items):
+            raise IndexError('Collection has no more values')
+        value = self.items[self.index]
+        self.index = self.index + 1
+        return value
+    
+    def hasNext(self):
+        return len(self.items)>self.index
+    
+    def resetNext(self):
+        self.index = 0
+    
+    def isEmpty(self):
+        return len(self.items) == 0
+    
+    def __repr__(self):
+        return f'Collection({self.items})'
+#End class Collection
+    
 
 class Stack_with_Fixed_Size():
     """This a Stack with fixed size.
 The order in which elements come off a stack gives rise to its alternative name,
 LIFO (last in, first out).
+- .push(data) → Adds an element to the end
+- .pop()      → removes and returns the last item
+- .isEmpty() → check whether Stack is empty
 
 Usage:
-    s1 = Stack(size=5)
+    s1 = Stack(5)
     my_stack.isEmpty()
     my_stack.push(item)
-    item = my_stack.pop()
-"""
-    def __init__(self, items=None, size=10):
-        if isinstance(items, list):
+    item = my_stack.pop()"""
+    
+    def __init__(self, items=10, default=Abstract.null):
+        if isinstance(items, int):
+            self.items = [default for i in range(items)]
+        elif isinstance(items, list):
             self.items = items
         else:
             self.items = list()
-            for i in range(size):
-                self.items.append(abstract.null)
-        self.size = size
+        
+        self.size = len(self.items)
         self.index = -1
     
     def push(self, item):
-        """Example:
-    my_stack = Stack(size=5)
-    my_stack.push(item)
-"""
         if self.index >= self.size - 1:
             raise IndexError(f'This Stack has a limit size of {self.size}.')
         self.index = self.index + 1
         self.items[self.index] = item
     
-    def pop(self):
-        """Return the next item in the Stack:
-    my_stack = Stack(size=5)
-    my_stack.push(item)
-    item = my_stack.pop()
-"""
+    def pop(self):       
         if self.index < 0:
             raise IndexError(f'This Stack is empty.')
         item = self.items[self.index]
-        self.items[self.index] = abstract.null
+        self.items[self.index] = Abstract.null
         self.index = self.index - 1
         return item
     def peek(self):
-        """Example:
-    my_stack = Stack(size=5)
-    my_stack.peek() # not available on IB
-"""
+        # not available on IB
         if not self.isEmpty():
             return self.items[self.index]
     
     def isFull(self):
-        """Returns True if is Full or False otherwise:
-    my_stack = Stack(size=5)
-    my_stack.isFull() # not available on IB
-"""
+        # not available on IB
         return (self.index+1 >= self.size)
     
     def isEmpty(self):
-        """Returns True if is Empty or False otherwise:
-    my_stack = Stack(size=5)
-    my_stack.isEmpty()
-"""
         return (self.index < 0)
     
     @property
@@ -132,7 +163,7 @@ Usage:
         return self.length
     
     def __repr__(self):
-        return "Stack(" + str(self.items) + ')'
+        return f'Stack({self.items})'
 #End class Stack_with_Fixed_Size
 
 
@@ -160,24 +191,26 @@ class Stack_with_Any_Size():
         return self.length
     
     def __repr__(self):
-        return "Stack(" + str(self.items) + ')'
+        return f'Stack({self.items})'
 #End class Stack_with_Any_Size
 
 
 class Stack(Stack_with_Fixed_Size):
-    pass
+    def __init__(self, items=10):
+        super().__init__(items)
 #End class Stack
 
 
 class Queue_with_Fixed_Size():
-    def __init__(self, items=None, size=10):
-        if isinstance(items, list):
+    def __init__(self, items=10, default=Abstract.null):
+        if isinstance(items, int):
+            self.items = [default for i in range(items)]
+        elif isinstance(items, list):
             self.items = items
         else:
             self.items = list()
-            for i in range(size):
-                self.items.append(abstract.null)
-        self.size = size
+
+        self.size = len(self.items)
         self.index = -1
         
     def enqueue(self, item):
@@ -190,9 +223,9 @@ class Queue_with_Fixed_Size():
         if self.index < 0:
             raise IndexError(f'This Queue is empty.')
         item = self.items[0]
-        for i in range(self.index+1):
+        for i in range(self.index):
             self.items[i] = self.items[i+1]
-        self.items[self.index] = abstract.null
+        self.items[self.index] = Abstract.null
         self.index = self.index - 1
         return item
     
@@ -207,7 +240,7 @@ class Queue_with_Fixed_Size():
         return self.length
     
     def __repr__(self):
-        return "Queue(" + str(self.items) + ')'
+        return f'Queue({self.items})'
 #End class Queue_with_Fixed_Size
 
 
@@ -234,22 +267,21 @@ class Queue_with_Any_Size():
         return len(self.items)
     
     def __repr__(self):
-        return "Queue(" + str(self.items) + ')'
+        return f'Queue({self.items})'
 #End class Queue_with_Any_Size
 
 
 class Queue(Queue_with_Fixed_Size):
-    pass
+    def __init__(self, items=10):
+        super().__init__(items)
 #End class Queue
 
 
 # Linked List
-"""
-https://realpython.com/linked-lists-python/#implementing-your-own-linked-list
-https://towardsdatascience.com/python-linked-lists-c3622205da81
-"""
+#https://realpython.com/linked-lists-python/#implementing-your-own-linked-list
+#https://towardsdatascience.com/python-linked-lists-c3622205da81
 class Node():
-    def __init__(self, value, next_node=abstract.null, prev_node=abstract.null):
+    def __init__(self, value, next_node=Abstract.null, prev_node=Abstract.null):
         self.value = value
         self.next = next_node
         self.prev = prev_node
@@ -263,17 +295,17 @@ class Node():
 
 
 class SingleLinkedList():   
-    def __init__(self, values=abstract.null):
-        self.head = abstract.null
-        self.tail = abstract.null
-        self.value = abstract.null
-        if type(values) != type(abstract.null):
+    def __init__(self, values=Abstract.null):
+        self.head = Abstract.null
+        self.tail = Abstract.null
+        self.value = Abstract.null
+        if type(values) != type(Abstract.null):
             self.add_multiple_nodes(values)
     
     def __repr__(self):
         nodes = []
         node = self.head
-        while type(node) != type(abstract.null):
+        while type(node) != type(Abstract.null):
             nodes.append(str(node))
             node = node.next
         return "LinkedList(" + str(nodes) + ')'
@@ -281,7 +313,7 @@ class SingleLinkedList():
     def __str__(self):
         nodes = []
         node = self.head
-        while type(node) != type(abstract.null):
+        while type(node) != type(Abstract.null):
             nodes.append(str(node))
             node = node.next
         nodes.append('null')
@@ -290,7 +322,7 @@ class SingleLinkedList():
     def __len__(self):
         count = 0
         node = self.head
-        while type(node) != type(abstract.null):
+        while type(node) != type(Abstract.null):
             count += 1
             node = node.next
         return count
@@ -310,7 +342,7 @@ class SingleLinkedList():
         return [node.value for node in self]
     
     def add_node(self, value):
-        if type(self.head) == type(abstract.null):
+        if type(self.head) == type(Abstract.null):
             self.tail = self.head = Node(value)
         else:
             self.tail.next = Node(value)
@@ -324,6 +356,9 @@ class SingleLinkedList():
 
 
 class DoublyLinkedList(SingleLinkedList):
+    def __init__(self, values=Abstract.null):
+        super().__init__(values)
+        
     def add_node(self, value):
         if self.head is None:
             self.tail = self.head = Node(value)
@@ -345,18 +380,80 @@ class DoublyLinkedList(SingleLinkedList):
 
 
 class CircularLinkedList(SingleLinkedList):
-    pass
+    def __init__(self, values=Abstract.null):
+        super().__init__(values)
 #End class CircularLinkedList
 
 
 class LinkedList(SingleLinkedList):
-    pass
+    def __init__(self, values=Abstract.null):
+        super().__init__(values)
 #End class CircularLinkedList
+
+
+
+class BinaryTree:
+    class Node:
+        def __init__(self, value=None):
+            self.left = None
+            self.right = None
+            self.value = value
+           
+    def __init__(self):
+        self.root = None
+    
+    def insert(self, value):
+        if self.root is None:
+            self.root = self.Node(value)
+            return 
+        
+        node = self.root
+        while node:
+            if value < node.value: 
+                if node.left is not None:
+                    node = node.left
+                else:
+                    node.left = self.Node(value)
+                    node = None
+            else:
+                if node.right is not None:
+                    node = node.right
+                else:
+                    node.right = self.Node(value)
+                    node = None
+        #End while
+    #end insert
+    
+    def get_depth(self):
+        return self._get_in_depth(self.root)
+        
+    def _get_in_depth(self, branch=None):
+        if branch is None:
+            return 0
+        return 1 + max(self._get_in_depth(branch.left),
+                       self._get_in_depth(branch.right))
+
+    def get_width(self):
+        width = 0
+        nodes = [self.root] # start from the top
+        while nodes:
+            width = max(width, len(nodes))
+            branchs = []
+            for node in nodes:
+                if node.left: branchs.append(node.left)
+                if node.right: branchs.append(node.right)
+            nodes = branchs
+        return width
+#End of class
+
+
+
+
 
 
 def test_Stack():
     print("Testing Stack")
-    s1 = Stack(size=5)
+    s1 = Stack(5)
     i = 0
     while not s1.isFull():
         s1.push(i)
@@ -381,6 +478,7 @@ def test_Queue():
         print(item)
     return q1
 #end def test_Queue
+       
 
 
 def test_LinkedList():
@@ -407,11 +505,23 @@ def test_Array2D():
     return a2
 #end def test_Array
 
+def test_Collection():
+    print("Testing Collection")
+    c1 = Collection()
+    for i in range(5):
+        c1.addItem(f'item{i+1}')
+        print(c1)
+    
+    while c1.hasNext():
+        value = c1.getNext()
+        print(value)
+    
 if __name__ == '__main__':
     #s1 = test_Stack()
     #q1 = test_Queue()
     #l1 = test_LinkedList()
     #a1 = test_Array()
     #a2 = test_Array2D()
+    #c1 = test_Collection()
     pass
 #end if main
